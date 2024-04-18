@@ -1,4 +1,4 @@
 # html-demo
-前端页面demo样式
+前端页面的一些有意思的样式在这里记录一下,以后可能会用上
 
-## 1 [太极](https://memoryfate.github.io/html-demo/taiji.html)
+- [太极](https://memoryfate.github.io/html-demo/taiji.html)
