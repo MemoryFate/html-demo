@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>hover</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="item-box" onclick="copyCode()">
+                <div class="hover_animation">
+                    <span class="span-line"></span>
+                    <span class="span-line"></span>
+                    <span class="span-line"></span>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script>
+        function copyCode() {
+            console.log('copy')
+        }
+    </script>
+    
+    <style lang="scss">
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .item-box {
+            height: 88px;
+            width: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0px 0px 20px 0px gray;
+        }
+
+        .hover_animation {
+            bottom: 45px;
+            height: 12px;
+            padding: 6px 5px;
+            width: 14px;
+            background: #222;
+            cursor: pointer;
+            opacity: 0.8;
+
+            .span-line {
+                background: #fff;
+                display: block;
+                height: 2px;
+                position: relative;
+                transition: all 0.4s;
+                width: 100%;
+            }
+
+            .span-line:not(:first-child) {
+                margin-top: 3px;
+            }
+        }
+
+        .hover_animation:hover {
+            opacity: 1;
+
+            .span-line:first-child {
+                top: 2px;
+                transform: rotate(-45deg);
+                width: 50%;
+            }
+
+            .span-line:last-child {
+                top: -2px;
+                transform: rotate(45deg);
+                width: 50%;
+            }
+        }
+    </style>
+</html>
