@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>css-style</title>
     </head>
     <body>
         <div class="content">
             <div class="item-box">
-                <div class="hover_animation">
+                <div class="taiji">
+                    <div class="yin"></div>
+                    <div class="yang"></div>
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="menu">
                     <span class="span-line"></span>
                     <span class="span-line"></span>
                     <span class="span-line"></span>
@@ -19,13 +25,13 @@
             </div>
         </div>
     </body>
-    
+
     <script>
         function copyCode() {
-            console.log('copy')
+            console.log("copy")
         }
     </script>
-    
+
     <style lang="scss">
         .content {
             display: flex;
@@ -42,7 +48,67 @@
             box-shadow: inset 0px 0px 20px 0px gray;
         }
 
-        .hover_animation {
+        .taiji {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            animation: taiji_rotation 2s linear infinite;
+            border: 1px solid black;
+
+            .yin,
+            .yang {
+                height: 50%;
+                width: 100%;
+                position: relative;
+            }
+
+            .yin::before,
+            .yang::before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 50%;
+                bottom: 0;
+                z-index: 1;
+                border-radius: 50%;
+                box-sizing: border-box;
+            }
+
+            .yin {
+                background-color: black;
+            }
+
+            .yang {
+                background-color: white;
+            }
+
+            .yin::before {
+                right: 0;
+                transform: translateY(50%);
+                background-color: white;
+                border: calc(50px / 8) solid black;
+            }
+
+            .yang::before {
+                left: 0;
+                transform: translateY(-50%);
+                background-color: black;
+                border: calc(50px / 8) solid white;
+            }
+        }
+
+        @keyframes taiji_rotation {
+            100% {
+                transform: rotate(1turn);
+            }
+        }
+
+        .menu {
             bottom: 45px;
             height: 12px;
             padding: 6px 5px;
@@ -65,7 +131,7 @@
             }
         }
 
-        .hover_animation:hover {
+        .menu:hover {
             opacity: 1;
 
             .span-line:first-child {
@@ -83,15 +149,15 @@
 
         .loading {
             aspect-ratio: 1;
-            width: 50px;
+            width: 50%;
             border-radius: 50%;
             animation: loading_rotation 1s infinite linear;
-            background: radial-gradient(farthest-side,#ffa516 94%, #0000) top/8px 8px no-repeat,conic-gradient(#0000 30%, #ffa516);
+            background: radial-gradient(farthest-side, #ffa516 94%, #0000) top/8px 8px no-repeat, conic-gradient(#0000 30%, #ffa516);
             -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
         }
         @keyframes loading_rotation {
             100% {
-                transform: rotate(1turn)
+                transform: rotate(1turn);
             }
         }
     </style>
